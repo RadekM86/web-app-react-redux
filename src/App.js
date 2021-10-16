@@ -6,6 +6,7 @@ import Form from './components/Form';
 import UsersPage from "./pages/UsersPage";
 import Navigation from "./components/Navigation";
 import ErrorPage from "./pages/ErrorPage";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   const loggedIn = true;
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/login" component={Form} />
             <Route exact path="/users" component={UsersPage} />
             <Route exact path="/pokemon" component={PokemonPage} />
+            <Route exact path="/products" component={ProductsPage} />
             <Route path="*" component={ErrorPage} />
           </Switch>
         </div>
