@@ -1,0 +1,9 @@
+.pokemon-container{
+    display: flex;
+    max-width: 60%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.pokemon-container > * {
+    margin: 0 8px
+}

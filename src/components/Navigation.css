@@ -1,0 +1,9 @@
+.nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.nav > * {
+    margin: 0 8px;
+}
