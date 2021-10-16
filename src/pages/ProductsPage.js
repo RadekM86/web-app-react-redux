@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductsPage.css';
 import Card from '../components/Card';
+import { useDispatch } from 'react-redux';
+import { increment, decrement } from '../actions';
 export default function ProductsPage() {
+    const dispatch = useDispatch();
     const collection = [{
         name: 'piernik',
         price: 40,
@@ -9,6 +12,14 @@ export default function ProductsPage() {
         img: 'https://as1.ftcdn.net/v2/jpg/02/96/09/24/1000_F_296092416_C0kr5wWym1DB7z75QS6gFFybO2Q7IhRL.jpg'
     }]
     const [data, setData] = useState(collection);
+    useEffect(()=>{
+        const fetchProducts = async () => {
+            const result = await fetch("/api/products");
+            const lista = await result.json();
+            setData(lista);
+        }
+        fetchProducts()
+    },[setData]);
 
     return (
       <div className="products-root">
@@ -19,8 +30,8 @@ export default function ProductsPage() {
             price={item.price}
             img={item.img}
           >
-            <button className="but-decrement">-</button>
-            <button className="but-increment">+</button>
+            <button onClick={() => dispatch(decrement())} className="but-decrement">-</button>
+            <button onClick={() => dispatch(increment())} className="but-increment">+</button>
           </Card>
         ))}
       </div>

@@ -11,6 +11,7 @@ export default function Navigation() {
             <Link to="/users">Users</Link>
             <Link to="/login">Login</Link>
             <Link to="/pokemon">Pokemon</Link>
+            <Link to="/products">Products</Link>
         </nav>
         <h1>{counter}</h1>
         </div>

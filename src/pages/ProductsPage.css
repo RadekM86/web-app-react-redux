@@ -1,8 +1,13 @@
 .products-root {
     display: flex;
     width: '100%';
+    flex-wrap: wrap;
     justify-content: flex-start;
     padding: 16px;
+}
+
+.products-root > * {
+    margin-top: 16px;
 }
 
 .products-root > * + * {
@@ -12,7 +17,7 @@
 button {
     display: inline-block;
     border: none;
-    padding: 1rem 2rem;
+    padding: 8px;
     margin: 0;
     text-decoration: none;
     color: #ffffff;
