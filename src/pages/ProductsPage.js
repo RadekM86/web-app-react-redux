@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './ProductsPage.css';
 import Card from '../components/Card';
-import { useDispatch } from 'react-redux';
-import { increment, decrement } from '../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addProduct, removeProduct } from '../actions';
 export default function ProductsPage() {
     const dispatch = useDispatch();
+    const productList = useSelector(state =>state.products)
     const collection = [{
         name: 'piernik',
         price: 40,
@@ -30,8 +31,8 @@ export default function ProductsPage() {
             price={item.price}
             img={item.img}
           >
-            <button onClick={() => dispatch(decrement())} className="but-decrement">-</button>
-            <button onClick={() => dispatch(increment())} className="but-increment">+</button>
+            <button disabled={!productList.find(el => el._id ===item._id)} onClick={() => dispatch(removeProduct(item._id))} className="but-decrement">-</button>
+            <button  onClick={() => dispatch(addProduct(item._id))} className="but-increment">+</button>
           </Card>
         ))}
       </div>
